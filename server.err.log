@@ -1,0 +1,20 @@
+INFO:     Started server process [22688]
+INFO:     Waiting for application startup.
+2026-05-25 21:19:08,236 INFO [app.services.rag_service] Chroma collection already contains indexed chunks
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+2026-05-25 21:20:14,212 INFO [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent "HTTP/1.1 200 OK"
+2026-05-25 21:20:14,217 INFO [app.services.gemini_service] Gemini embedded 1 text chunks
+2026-05-25 21:20:14,220 INFO [app.services.rag_service] Similarity scores for session quality-ui-test-2: [0.6417, 0.534, 0.517, 0.5, 0.4878]
+2026-05-25 21:20:16,578 INFO [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-25 21:20:16,580 INFO [app.services.gemini_service] Gemini tokens used: 586
+2026-05-25 21:20:53,713 INFO [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent "HTTP/1.1 200 OK"
+2026-05-25 21:20:53,719 INFO [app.services.gemini_service] Gemini embedded 1 text chunks
+2026-05-25 21:20:53,723 INFO [app.services.rag_service] Similarity scores for session e80a3885-2288-4d24-9df2-ea041ee09752: [0.4886, 0.4881, 0.4878, 0.4838, 0.4747]
+2026-05-25 21:20:55,920 INFO [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-25 21:20:55,921 INFO [app.services.gemini_service] Gemini tokens used: 1030
+2026-05-25 21:26:18,717 INFO [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-embedding-001:embedContent "HTTP/1.1 200 OK"
+2026-05-25 21:26:18,742 INFO [app.services.gemini_service] Gemini embedded 1 text chunks
+2026-05-25 21:26:18,745 INFO [app.services.rag_service] Similarity scores for session 8b4d393b-1f25-4602-bb5b-97aa990365e2: [0.6788, 0.5244, 0.5239, 0.5077, 0.5076]
+2026-05-25 21:26:20,759 INFO [httpx] HTTP Request: POST https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent "HTTP/1.1 200 OK"
+2026-05-25 21:26:20,762 INFO [app.services.gemini_service] Gemini tokens used: 639
