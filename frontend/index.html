@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gemini RAG Chat Assistant</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <aside class="sidebar" aria-label="Assistant workspace">
+        <div class="brand">
+          <div class="brand-mark">R</div>
+          <div>
+            <h1>RAG Assistant</h1>
+            <p>Semantic knowledge chat</p>
+          </div>
+        </div>
+
+        <button id="newChatButton" class="new-chat" type="button">New chat</button>
+
+        <section class="status-panel" aria-label="System status">
+          <div class="status-row">
+            <span>Session</span>
+            <strong id="activeSession">Active</strong>
+          </div>
+          <div class="status-row">
+            <span>Vector DB</span>
+            <strong id="vectorStatus">Checking</strong>
+          </div>
+          <div class="status-row">
+            <span>Indexed docs</span>
+            <strong>6</strong>
+          </div>
+          <div class="status-row">
+            <span>Embeddings</span>
+            <strong>gemini-embedding-001</strong>
+          </div>
+          <div class="status-row">
+            <span>Model</span>
+            <strong>gemini-2.5-flash</strong>
+          </div>
+        </section>
+
+        <section class="history-panel" aria-label="Previous chats">
+          <div class="section-title">Previous chats</div>
+          <div id="chatHistory" class="chat-history"></div>
+        </section>
+      </aside>
+
+      <section class="chat-panel" aria-label="Chat assistant">
+        <header class="topbar">
+          <div>
+            <h2>Knowledge Base Chat</h2>
+            <p>Grounded answers with retrieval-aware response metadata</p>
+          </div>
+          <div class="topbar-pill">ChromaDB + Gemini</div>
+        </header>
+
+        <div id="chatMessages" class="messages" aria-live="polite"></div>
+
+        <div id="loadingIndicator" class="loading-card" hidden>
+          <div class="typing-dots" aria-hidden="true">
+            <span></span><span></span><span></span>
+          </div>
+          <div>
+            <strong id="loadingTitle">Searching knowledge base...</strong>
+            <p id="loadingSubtitle">Embedding your question and checking the vector index.</p>
+          </div>
+        </div>
+
+        <form id="chatForm" class="composer">
+          <textarea
+            id="messageInput"
+            rows="1"
+            autocomplete="off"
+            placeholder="Ask about password reset, billing, indexing, APIs, privacy, or troubleshooting..."
+            required
+          ></textarea>
+          <button id="sendButton" type="submit">Send</button>
+        </form>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>
