@@ -1,4 +1,1 @@
-{
-  "buildCommand": "echo 'Static files only'",
-  "outputDirectory": "frontend"
-}
+{}
