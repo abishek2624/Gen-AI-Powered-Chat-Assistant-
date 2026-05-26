@@ -85,6 +85,52 @@ GEMINI_EMBEDDING_MODEL=gemini-embedding-001
 GEMINI_CHAT_MODEL=gemini-2.5-flash
 ```
 
+## Deployment
+
+### Backend on Render
+
+1. Push this repo to GitHub and connect it in Render.
+2. Create a new Render Web Service.
+3. Select `Python` as the environment.
+4. Set the build command:
+
+```bash
+pip install -r requirements.txt
+```
+
+5. Set the start command:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port $PORT
+```
+
+6. Add required environment variables in Render:
+
+```text
+GEMINI_API_KEY=your-gemini-api-key
+GEMINI_EMBEDDING_MODEL=gemini-embedding-001
+GEMINI_CHAT_MODEL=gemini-2.5-flash
+```
+
+7. Deploy and note the Render URL, for example `https://your-backend.onrender.com`.
+
+8. Update `frontend/config.js` with that URL:
+
+```js
+window.APP_CONFIG = {
+  apiBaseUrl: "https://your-backend.onrender.com",
+};
+```
+
+### Frontend on Vercel
+
+1. Create a new Vercel project from this GitHub repo.
+2. Set the project root to the `frontend` folder.
+3. No build command is required for static files.
+4. Deploy the frontend; Vercel will serve the static site from `frontend/`.
+
+Once both services are deployed, the Vercel frontend will call the Render backend through the configured `apiBaseUrl`.
+
 Run the app:
 
 ```bash

@@ -15,6 +15,8 @@ const SESSIONS_KEY = "rag-chat-sessions";
 const MESSAGES_KEY_PREFIX = "rag-chat-messages:";
 const FALLBACK_REPLY = "I could not find enough information in the knowledge base to answer this question.";
 
+const API_BASE_URL = (window.APP_CONFIG?.apiBaseUrl || "").replace(/\/$/, "");
+
 const suggestedPrompts = [
   "How do I reset my password?",
   "How can I check invoices?",
@@ -270,6 +272,10 @@ function setLoading(isLoading, phase = "search") {
   }
 }
 
+function getApiUrl(path) {
+  return `${API_BASE_URL}${path.startsWith("/") ? path : `/${path}`}`;
+}
+
 async function sendMessage(message) {
   const start = performance.now();
   setLoading(true, "search");
@@ -277,7 +283,7 @@ async function sendMessage(message) {
   const generateTimer = setTimeout(() => setLoading(true, "generate"), 1100);
 
   try {
-    const response = await fetch("/api/chat", {
+    const response = await fetch(getApiUrl("/api/chat"), {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ sessionId: getSessionId(), message }),
@@ -374,7 +380,7 @@ newChatButton.addEventListener("click", () => {
 
 async function checkHealth() {
   try {
-    const response = await fetch("/health");
+    const response = await fetch(getApiUrl("/health"));
     vectorStatus.textContent = response.ok ? "Online" : "Degraded";
     vectorStatus.className = response.ok ? "status-ok" : "status-warn";
   } catch {
